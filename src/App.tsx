@@ -6,22 +6,22 @@ import { requestPhotoByKey } from "./services/api.js";
 
 import css from "./App.module.css";
 
-import ImageGallery from "./components/ImageGallery/ImageGallery";
-import SearchBar from "./components/SearchBar/SearchBar";
-import Loader from "./components/Loader/Loader";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
-import ImageModal from "./components/ImageModal/ImageModal";
+import ImageGallery from "./components/ImageGallery/ImageGallery.jsx";
+import SearchBar from "./components/SearchBar/SearchBar.jsx";
+import Loader from "./components/Loader/Loader.jsx";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
+import ImageModal from "./components/ImageModal/ImageModal.jsx";
 
 function App() {
   const [images, setImages] = useState([]);
-  const [keyWord, setKeyword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [keyWord, setKeyword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
   const [modalImageInfo, setModalImageInfo] = useState({});
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
   const onOpenModal = (imgInfo) => {
     setModalImageInfo(imgInfo);
