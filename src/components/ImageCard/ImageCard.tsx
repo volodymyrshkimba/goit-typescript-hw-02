@@ -1,7 +1,14 @@
+import { Image, ImgInfo } from "../../App.types";
+
 import css from "./ImageCard.module.css";
 
-const ImageCard = ({ image, onOpenModal }) => {
-  const handleClick = () => {
+interface ImageCardProps {
+  image: Image;
+  onOpenModal: (imgInfo: ImgInfo) => void;
+}
+
+const ImageCard = ({ image, onOpenModal }: ImageCardProps) => {
+  const handleClick = (): void => {
     onOpenModal({
       regular: image.urls.regular,
       alt: image.alt_description,

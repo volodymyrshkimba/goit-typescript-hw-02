@@ -3,6 +3,8 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { TbFileDescription } from "react-icons/tb";
 import { AiOutlineLike } from "react-icons/ai";
 
+import { ImgInfo } from "../../App.types";
+
 import css from "./ImageModal.module.css";
 
 Modal.setAppElement("#root");
@@ -23,26 +25,36 @@ const customStyles = {
   },
 };
 
-const ImageModal = ({ modalIsOpen, modalImageInfo, closeModal }) => {
+interface ImageModalProps {
+  modalIsOpen: boolean;
+  modalImageInfo: ImgInfo | null;
+  closeModal: () => void;
+}
+
+const ImageModal = ({
+  modalIsOpen,
+  modalImageInfo,
+  closeModal,
+}: ImageModalProps) => {
   return (
     <Modal
       isOpen={modalIsOpen}
       style={customStyles}
       onRequestClose={closeModal}
     >
-      <img src={modalImageInfo.regular} alt={modalImageInfo.alt} />
+      <img src={modalImageInfo?.regular} alt={modalImageInfo?.alt} />
       <ul className={css.info}>
         <li>
           <FaRegUserCircle />
-          <p>{modalImageInfo.user || "without username"}</p>
+          <p>{modalImageInfo?.user || "without username"}</p>
         </li>
         <li>
           <TbFileDescription />
-          <p>{modalImageInfo.description || "'without description'"}</p>
+          <p>{modalImageInfo?.description || "'without description'"}</p>
         </li>
         <li>
           <AiOutlineLike />
-          <p>{modalImageInfo.likes}</p>
+          <p>{modalImageInfo?.likes}</p>
         </li>
       </ul>
     </Modal>

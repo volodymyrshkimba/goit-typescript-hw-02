@@ -1,6 +1,13 @@
 import axios from "axios";
+import { Image } from "../App.types";
 
-export const requestPhotoByKey = (keyWord, page) => {
+interface AxiosGetData {
+  results: Image[];
+  total: number;
+  total_pages: number;
+}
+
+export const requestPhotoByKey = (keyWord: string, page: number) => {
   const axiosParams = {
     params: {
       page: page,
@@ -13,5 +20,5 @@ export const requestPhotoByKey = (keyWord, page) => {
     baseURL: "https://api.unsplash.com/",
   };
 
-  return axios.get("/search/photos", axiosParams);
+  return axios.get<AxiosGetData>("/search/photos", axiosParams);
 };
